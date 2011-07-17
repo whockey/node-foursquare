@@ -21,6 +21,7 @@ Version History
     * Users - Leaderboard, Requests
     * Venues - Categories, Explore
 * v0.1.1 - Support for Foursquare API Version + Deprecation Warnings (via configuration).
+* v0.1.2 - Added new mayorships endpoint, removed extraneous field from User.getBadges (non-passive).
 
 
 Use

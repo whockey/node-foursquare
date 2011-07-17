@@ -109,7 +109,7 @@ function TestSuite(accessToken) {
 
   Tests.Users.getBadges = function() {
     var test = "Foursquare.Users.getBadges(self)";
-    Foursquare.Users.getBadges(null, null, accessToken, function (error, data) {
+    Foursquare.Users.getBadges(null, accessToken, function (error, data) {
       if(error) {
         reportError(test, error.message);
       }
@@ -157,6 +157,26 @@ function TestSuite(accessToken) {
           assert.ok(data.friends);
           assert.ok(data.friends.count >= 0);
           assert.ok(data.friends.items);
+          ok(test);
+        } catch (error) {
+          reportError(test, error);
+        }
+      }
+    });
+  };
+
+  Tests.Users.getMayorships = function() {
+    var test = "Foursquare.Users.getMayorships(self)";
+    Foursquare.Users.getMayorships(null, null, accessToken, function (error, data) {
+      if(error) {
+        reportError(test, error.message);
+      }
+      else {
+        try {
+          logger.trace(sys.inspect(data));
+          assert.ok(data.mayorships);
+          assert.ok(data.mayorships.count >= 0);
+          assert.ok(data.mayorships.items);
           ok(test);
         } catch (error) {
           reportError(test, error);
