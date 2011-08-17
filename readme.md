@@ -22,6 +22,7 @@ Version History
     * Venues - Categories, Explore
 * v0.1.1 - Support for Foursquare API Version + Deprecation Warnings (via configuration).
 * v0.1.2 - Added new mayorships endpoint, removed extraneous field from User.getBadges (non-passive).
+* v0.1.3 - Added Updates endpoint, updated to log4js v0.3.x.
 
 
 Use
@@ -158,6 +159,8 @@ Documentation
 -------------
 
 Detailed documentation is available in the /docs directory.
+
+(In the latest version of JSDoc 3, the file names are replaced with random identifiers. Not sure why, we'll see if they can get that fixed soon.)
 
 Notes
 -----

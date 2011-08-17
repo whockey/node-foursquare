@@ -2,32 +2,32 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>JSDoc: Module: node-foursquare/Tips</title>
+	<title>JSDoc: Module: node-foursquare/Checkins</title>
 	
 	<script src="http://shjs.sourceforge.net/sh_main.min.js"> </script>
     <script src="http://shjs.sourceforge.net/lang/sh_javascript.min.js"> </script>
     
     <link type="text/css" rel="stylesheet" href="styles/node-dark.css">
     <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
-
 </head>
 
 <body>
 
 <div id="main">
-
-<h1 class="page-title">Module: node-foursquare/Tips</h1>
-
-
-
-<section>
- 
-<header>
-    <h2>node-foursquare/Tips</h2>
-</header>  
-
-<article>    
-    <p class="description">A module for retrieving information about Tips from Foursquare.</p><dl class="details">
+    
+    <h1 class="page-title">Module: node-foursquare/Checkins</h1>
+    
+    
+    
+    <section>
+     
+    <header>
+        <h2>node-foursquare/Checkins</h2>
+        
+    </header>  
+    
+    <article>    
+        <p class="description">A module for retrieving information about Checkins from Foursquare.</p><dl class="details">
 	
 	
 	
@@ -44,29 +44,32 @@
 	
 	
 	<dt>Source:</dt>
-	<dd>../node-foursquare/lib/tips.js, line 1</dd>
+	<dd>/Users/clintandrewhall/Projects/node-foursquare/lib/checkins.js, line 1</dd>
 	
 	
 	
 </dl>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
         
-        <h3 class="subsection-title">Methods</h3>
         
-        <dl>
-<dt id="module:node-foursquare/Tips.getTip">
-    <h4 class="name" id="getTip"><span class="type-signature">&lt;static> </span>getTip(tipId, [accessToken], callback)<span class="type-signature"></span></h4>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+            
+            <h3 class="subsection-title">Methods</h3>
+            
+            <dl>
+<dt id="module:node-foursquare/Checkins.getCheckin">
+    <h4 class="name" id="getCheckin"><span class="type-signature">&lt;static> </span>getCheckin(checkinId, [params], accessToken, callback)<span class="type-signature"></span></h4>
     
     
 </dt>
@@ -74,7 +77,7 @@
     
     
     <p class="description">
-        Retrieve a Tip.
+        Retrieve a Foursquare Check-in.
     </p>
     
     
@@ -95,16 +98,17 @@
 	
 	
 	<dt>Source:</dt>
-	<dd>../node-foursquare/lib/tips.js, line 19</dd>
+	<dd>/Users/clintandrewhall/Projects/node-foursquare/lib/checkins.js, line 24</dd>
 	
 	
 	
 	<dt>See:</dt>
 	<dd>
-        <ul><li>https://developer.foursquare.com/docs/tips/tips.html</li></ul>
+        <ul><li>https://developer.foursquare.com/docs/checkins/checkins.html</li></ul>
 	</dd>
 	
 </dl>
+
     
     
     
@@ -134,7 +138,7 @@
 	
         <tr>
             
-                <td class="name"><code>tipId</code></td>
+                <td class="name"><code>checkinId</code></td>
             
             
             <td class="type">
@@ -149,7 +153,30 @@
             
             
             
-            <td class="description last">The id of a Tip.</td>
+            <td class="description last">The id of the check-in.</td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>params</code></td>
+            
+            
+            <td class="type">
+            Object
+            </td>
+            
+            
+                <td class="attributes">
+                &lt;optional><br>
+                </td>
+            
+            
+            
+            
+            <td class="description last">An object containing additional parameters. Refer to Foursquare documentation for details
+on currently supported parameters.</td>
         </tr>
 	
 	
@@ -165,7 +192,7 @@
             
             
                 <td class="attributes">
-                &lt;optional><br>
+                
                 </td>
             
             
@@ -209,8 +236,9 @@
     
 
 </dd>
-<dt id="module:node-foursquare/Tips.search">
-    <h4 class="name" id="search"><span class="type-signature">&lt;static> </span>search(lat, lng, [params], [accessToken], callback)<span class="type-signature"></span></h4>
+
+<dt id="module:node-foursquare/Checkins.getRecentCheckins">
+    <h4 class="name" id="getRecentCheckins"><span class="type-signature">&lt;static> </span>getRecentCheckins([params], accessToken, callback)<span class="type-signature"></span></h4>
     
     
 </dt>
@@ -218,7 +246,7 @@
     
     
     <p class="description">
-        Search for tips around a location.
+        Retreive recent checkins.
     </p>
     
     
@@ -239,20 +267,63 @@
 	
 	
 	<dt>Source:</dt>
-	<dd>../node-foursquare/lib/tips.js, line 42</dd>
+	<dd>/Users/clintandrewhall/Projects/node-foursquare/lib/checkins.js, line 47</dd>
 	
 	
 	
 	<dt>See:</dt>
 	<dd>
-        <ul><li>http://developer.foursquare.com/docs/tips/search.html</li></ul>
+        <ul><li>https://developer.foursquare.com/docs/checkins/recent.html</li></ul>
 	</dd>
 	
 </dl>
+
     
     
     
     <h5>Parameters:</h5>
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		<th>Argument</th>
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>params</code></td>
+            
+            
+            <td class="type">
+            Object
+            </td>
+            
+            
+                <td class="attributes">
+                &lt;optional><br>
+                </td>
+            
+            
+            
+            
+            <td class="description last">An object containing additional parameters. Refer to Foursquare documentation for details
+on currently supported parameters.<h6>Properties</h6>
 
 <table class="params">
     <thead>
@@ -287,7 +358,7 @@
             
             
                 <td class="attributes">
-                
+                &lt;optional><br>
                 </td>
             
             
@@ -309,7 +380,7 @@
             
             
                 <td class="attributes">
-                
+                &lt;optional><br>
                 </td>
             
             
@@ -319,26 +390,8 @@
         </tr>
 	
 	
-	
-        <tr>
-            
-                <td class="name"><code>params</code></td>
-            
-            
-            <td class="type">
-            Object
-            </td>
-            
-            
-                <td class="attributes">
-                &lt;optional><br>
-                </td>
-            
-            
-            
-            
-            <td class="description last">An object containing additional parameters. Refer to Foursquare documentation for details
-on currently supported parameters.</td>
+	</tbody>
+</table></td>
         </tr>
 	
 	
@@ -354,7 +407,7 @@ on currently supported parameters.</td>
             
             
                 <td class="attributes">
-                &lt;optional><br>
+                
                 </td>
             
             
@@ -397,24 +450,28 @@ on currently supported parameters.</td>
      
     
 
-</dd></dl>
+</dd>
+</dl>
+            
         
+        
+        
+    </article>
     
+    </section>  
     
-    
-</article>
-
-</section>  
-
 </div>
-<nav>
-    <h3>Modules</h3><ul><li><a href="module_node-foursquare.html">node-foursquare</a></li><li><a href="module_node-foursquare_Checkins.html">node-foursquare/Checkins</a></li><li><a href="module_node-foursquare_Photos.html">node-foursquare/Photos</a></li><li><a href="module_node-foursquare_Settings.html">node-foursquare/Settings</a></li><li><a href="module_node-foursquare_Specials.html">node-foursquare/Specials</a></li><li><a href="module_node-foursquare_Tips.html">node-foursquare/Tips</a></li><li><a href="module_node-foursquare_Users.html">node-foursquare/Users</a></li><li><a href="module_node-foursquare_Venues.html">node-foursquare/Venues</a></li></ul>
-</nav>
-<br clear="both">
-<footer>
-    Documentation generated by JSDoc 3 on Sun Jul 17 2011 15:57:57 GMT-0500 (CDT)
-</footer>
-<script> sh_highlightDocument(); </script>
 
+<nav>
+    <h3>Modules</h3><ul><li><a href="d964d235cd.html">node-foursquare</a></li><li><a href="878f414949.html">node-foursquare/Checkins</a></li><li><a href="fcedc04194.html">node-foursquare/Photos</a></li><li><a href="1923ac8937.html">node-foursquare/Settings</a></li><li><a href="8302bb15e2.html">node-foursquare/Specials</a></li><li><a href="b54997a93c.html">node-foursquare/Tips</a></li><li><a href="f6b7bda80a.html">node-foursquare/Updates</a></li><li><a href="074f63802b.html">node-foursquare/Users</a></li><li><a href="f2ee19a19f.html">node-foursquare/Venues</a></li></ul>
+</nav>
+
+<br clear="both">
+
+<footer>
+    Documentation generated by <a href="https://github.com/micmath/jsdoc">JSDoc 3</a> on Wed Aug 17 2011 15:36:28 GMT-0500 (CDT)
+</footer>
+
+<script> sh_highlightDocument(); </script>
 </body>
 </html>

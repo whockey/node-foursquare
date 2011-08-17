@@ -1,8 +1,8 @@
 var sys = require('sys'),
 	express = require('express'),
 	assert = require('assert'),
-  log4js = require("log4js")(),
-  config = require('./config').config;
+  log4js = require("log4js"),
+  config = require('./config');
 
 log4js.configure(config.log4js);
 
@@ -25,7 +25,8 @@ function TestSuite(accessToken) {
     "Tips" : {},
     "Photos" : {},
     "Settings" : {},
-    "Specials" : {}
+    "Specials" : {},
+    "Updates" : {}
   };
 
   Tests.Users.search = function() {
@@ -41,7 +42,7 @@ function TestSuite(accessToken) {
           logger.trace(sys.inspect(data));
           assert.ok(data.results);
           assert.equal(data.results[0].id, "33");
-          assert.equal(data.results[0].firstName, "Naveen");
+          assert.equal(data.results[0].firstName, "naveen");
           ok(test);
         } catch (error) {
           reportError(test, error);
@@ -98,7 +99,7 @@ function TestSuite(accessToken) {
           logger.trace(sys.inspect(data));
           assert.ok(data.user);
           assert.equal(data.user.id, "33");
-          assert.equal(data.user.firstName, "Naveen");
+          assert.equal(data.user.firstName, "naveen");
           ok(test);
         } catch (error) {
           reportError(test, error);
@@ -577,6 +578,44 @@ function TestSuite(accessToken) {
           assert.ok(data.specials);
           assert.ok(data.specials.count >= 0);
           assert.ok(data.specials.items);
+          ok(test);
+        } catch (error) {
+          reportError(test, error);
+        }
+      }
+    });
+  };
+
+  Tests.Updates.getUpdate = function() {
+    var test = "Foursquare.Updates.getUpdate(4e4ad999ac6317362bd6b320)";
+    Foursquare.Updates.getUpdate("4e4ad999ac6317362bd6b320", accessToken, function (error, data) {
+      if(error) {
+        reportError(test, error.message);
+      }
+      else {
+        try {
+          logger.trace(sys.inspect(data));
+          assert.ok(data.notification);
+          ok(test);
+        } catch (error) {
+          reportError(test, error);
+        }
+      }
+    });
+  };
+
+  Tests.Updates.getNotifications = function() {
+    var test = "Foursquare.Updates.getNotifications()";
+    Foursquare.Updates.getNotifications({}, accessToken, function (error, data) {
+      if(error) {
+        reportError(test, error.message);
+      }
+      else {
+        try {
+          logger.trace(sys.inspect(data));
+          assert.ok(data.notifications);
+          assert.ok(data.notifications.count >= 0);
+          assert.ok(data.notifications.items);
           ok(test);
         } catch (error) {
           reportError(test, error);
