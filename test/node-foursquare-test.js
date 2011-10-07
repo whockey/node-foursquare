@@ -24,10 +24,11 @@ function TestSuite(accessToken) {
     "Checkins" : {},
     "Tips" : {},
     "Lists" : {},
+    "Updates" : {},
     "Photos" : {},
     "Settings" : {},
     "Specials" : {},
-    "Updates" : {}
+    "Events" : {}
   };
 
   Tests.Users.search = function() {
@@ -599,6 +600,44 @@ function TestSuite(accessToken) {
     });
   };
 
+  Tests.Updates.getUpdate = function() {
+    var test = "Foursquare.Updates.getUpdate(4e4ad999ac6317362bd6b320)";
+    Foursquare.Updates.getUpdate("4e4ad999ac6317362bd6b320", accessToken, function (error, data) {
+      if(error) {
+        reportError(test, error.message);
+      }
+      else {
+        try {
+          logger.trace(sys.inspect(data));
+          assert.ok(data.notification);
+          ok(test);
+        } catch (error) {
+          reportError(test, error);
+        }
+      }
+    });
+  };
+
+  Tests.Updates.getNotifications = function() {
+    var test = "Foursquare.Updates.getNotifications()";
+    Foursquare.Updates.getNotifications({}, accessToken, function (error, data) {
+      if(error) {
+        reportError(test, error.message);
+      }
+      else {
+        try {
+          logger.trace(sys.inspect(data));
+          assert.ok(data.notifications);
+          assert.ok(data.notifications.count >= 0);
+          assert.ok(data.notifications.items);
+          ok(test);
+        } catch (error) {
+          reportError(test, error);
+        }
+      }
+    });
+  };
+
   Tests.Tips.search = function() {
     var test = "Foursquare.Tips.search(lat: 40.7, lng: -74)";
     Foursquare.Tips.search("40.7", "-74", null, accessToken, function (error, data) {
@@ -692,16 +731,17 @@ function TestSuite(accessToken) {
     });
   };
 
-  Tests.Updates.getUpdate = function() {
-    var test = "Foursquare.Updates.getUpdate(4e4ad999ac6317362bd6b320)";
-    Foursquare.Updates.getUpdate("4e4ad999ac6317362bd6b320", accessToken, function (error, data) {
+  Tests.Events.getEvent = function() {
+    var test = "Foursquare.Events.getEvent(4e173d2cbd412187aabb3c04)";
+    Foursquare.Events.getEvent("4e173d2cbd412187aabb3c04", accessToken, function (error, data) {
       if(error) {
         reportError(test, error.message);
       }
       else {
         try {
           logger.trace(sys.inspect(data));
-          assert.ok(data.notification);
+          assert.ok(data.event);
+          assert.ok(data.event.id == "4e173d2cbd412187aabb3c04");
           ok(test);
         } catch (error) {
           reportError(test, error);
@@ -710,18 +750,37 @@ function TestSuite(accessToken) {
     });
   };
 
-  Tests.Updates.getNotifications = function() {
-    var test = "Foursquare.Updates.getNotifications()";
-    Foursquare.Updates.getNotifications({}, accessToken, function (error, data) {
+  Tests.Events.getCategories = function() {
+    var test = "Foursquare.Events.getCategories()";
+    Foursquare.Events.getCategories(null, accessToken, function (error, data) {
       if(error) {
         reportError(test, error.message);
       }
       else {
         try {
           logger.trace(sys.inspect(data));
-          assert.ok(data.notifications);
-          assert.ok(data.notifications.count >= 0);
-          assert.ok(data.notifications.items);
+          assert.ok(data.categories);
+          assert.ok(data.categories.length > 0);
+          ok(test);
+        } catch (error) {
+          reportError(test, error);
+        }
+      }
+    });
+  };
+
+  Tests.Events.search = function() {
+    var test = "Foursquare.Events.search()";
+    Foursquare.Events.search({}, accessToken, function (error, data) {
+      if(error) {
+        reportError(test, error.message);
+      }
+      else {
+        try {
+          logger.trace(sys.inspect(data));
+          assert.ok(data.specials);
+          assert.ok(data.specials.count >= 0);
+          assert.ok(data.specials.items);
           ok(test);
         } catch (error) {
           reportError(test, error);
@@ -819,7 +878,7 @@ app.get("/deprecated", function(req, res) {
 app.get("/test", function(req, res) {
   var accessToken = req.query.token || null, type = "Testing with" + (accessToken ? "" : "out") + " Authorization";
   logger.info("\n\n" + type + "\n");
-  TestSuite(accessToken).execute("Lists");
+  TestSuite(accessToken).execute();
   res.send('<html></html><title>Refer to Console</title><body>' + type + '...</body></html>');
 });
 
