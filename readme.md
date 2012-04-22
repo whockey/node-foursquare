@@ -131,10 +131,10 @@ Testing
 
 To test, you need to create a config.js file in the /test directory as follows:
 
-    exports.config = {
+    module.exports = {
       "secrets" : {
-        "clientId" : [YOUR_CLIENT_ID],
-        "clientSecret" : [YOUR_CLIENT_SECRET],
+        "clientId" : "YOUR_CLIENT_ID",
+        "clientSecret" : "YOUR_CLIENT_SECRET",
         "redirectUrl" : "http://localhost:3000/callback" // This should also be set in your OAuth profile.
       }
     };

@@ -3,8 +3,16 @@
   "description": "Fault-tolerant Foursquare API v2 wrapper for Node JS.",
   "version": "0.1.4",
   "main": "index.js",
-  "keywords": [ "node-foursquare", "foursquare", "4sq" ],
-  "tags": [ "node-foursquare", "foursquare", "4sq" ],
+  "keywords": [
+    "node-foursquare",
+    "foursquare",
+    "4sq"
+  ],
+  "tags": [
+    "node-foursquare",
+    "foursquare",
+    "4sq"
+  ],
   "repository": {
     "type": "git",
     "url": "git://github.com/clintandrewhall/node-foursquare.git"
@@ -19,7 +27,10 @@
     }
   ],
   "dependencies": {
-    "log4js": "0.3.x"
+    "log4js": "~0.4.1"
+  },
+  "devDependencies": {
+    "express": "~2.5.0"
   },
   "engines": {
     "node": ">= 0.4.x"
