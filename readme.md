@@ -1,29 +1,18 @@
-node-foursquare
+node-foursquare-2
 ==================
 
-Fault-tolerant Foursquare API wrapper for Node JS.
+Fault-tolerant Foursquare API wrapper for Node JS. With slight update.
 
 
 Install
 -------
 
-    npm install node-foursquare
+    npm install node-foursquare-2
 
 Version History
 ---------------
 
-*  v0.0.1 - First release
-*  v0.0.2 - Bug Fixes and Downstream Merges
-*  v0.1.0 - Suggested Refactoring and latest endpoints from Foursquare (VERY NON-PASSIVE)
-    * Surround results with field name.
-    * Userless Access Tokens (for Venues.explore, etc).
-    * Ability to load single portions of the library, (e.g. only import Venues).
-    * Users - Leaderboard, Requests
-    * Venues - Categories, Explore
-* v0.1.1 - Support for Foursquare API Version + Deprecation Warnings (via configuration).
-* v0.1.2 - Added new mayorships endpoint, removed extraneous field from User.getBadges (non-passive).
-* v0.1.3 - Added Updates endpoint, updated to log4js v0.3.x.
-* v0.1.4 - Added Lists and Events endpoints.
+* v. 0.0.1 Added a small update to the Venue.search() method to support using the near parameter.
 
 Use
 ---
@@ -168,4 +157,5 @@ Notes
 This module is a read-only subset of the full Foursquare API, but further capability, (adding, posting, updating, etc),
 is forthcoming. Bugs and Pull Requests are, of course, accepted! :-)
 
-This project is a refactoring and enhancement of: https://github.com/yikulju/Foursquare-on-node
+This project is a ever-so-slight enhancement of: https://github.com/clintandrewhall/node-foursquare
+Which is a refactoring and enhancement of: https://github.com/yikulju/Foursquare-on-node
