@@ -148,6 +148,7 @@ function TestSuite(accessToken) {
     });
   };
 
+
   Tests.Users.getFriends = function() {
     var test = "Foursquare.Users.getFriends(self)";
     Foursquare.Users.getFriends(null, null, accessToken, function (error, data) {
@@ -468,6 +469,54 @@ function TestSuite(accessToken) {
         try {
           logger.trace(sys.inspect(data));
           assert.ok(data.recent);
+          ok(test);
+        } catch (error) {
+          reportError(test, error);
+        }
+      }
+    });
+  };
+  
+  Tests.Checkins.addCommentToCheckin = function(commentId) {
+    var self = this;
+    var test = "Foursquare.Checkins.addCommentToCheckin(4fc1f24ee4b06f6d23627a50, {text: 'Hello world!'})";
+    Foursquare.Checkins.addCommentToCheckin("4fc1f24ee4b06f6d23627a50", {text: "Hello world!"}, accessToken, function (error, data) {
+      if(error) {
+        reportError(test, error.message);
+      }
+      else {
+        try {
+          logger.trace(sys.inspect(data));
+          assert.ok(data.comment);
+          assert.ok(data.comment.id);
+          assert.equal(data.comment.text, "Hello world!");
+          ok(test);
+
+          // Executes the deleteCommentFromCheckin test by removing the just-added comment          
+          self.Tests.Checkins.deleteCommentFromCheckin("4fc1f24ee4b06f6d23627a50", data.comment.id);
+        } catch (error) {
+          reportError(test, error);
+        }
+      }
+    });
+  };
+
+  Tests.Checkins.deleteCommentFromCheckin = function(checkinId, commentId) {
+    // Executes only when called from addCommentToCheckin
+    if(!checkinId || !commentId) return;
+
+    var test = "Foursquare.Checkins.deleteCommentFromCheckin(" + checkinId + ", {commentId: '" + commentId +"'})";
+    logger.debug("Running: " + test);    
+    Foursquare.Checkins.deleteCommentFromCheckin(checkinId, {commentId: commentId}, accessToken, function (error, data) {
+      if(error) {
+        reportError(test, error.message);
+      }
+      else {
+        try {
+          logger.trace(sys.inspect(data));
+          assert.ok(data.checkin);
+          assert.equal(data.checkin.id, checkinId);
+          assert.equal(data.checkin.type, "checkin");
           ok(test);
         } catch (error) {
           reportError(test, error);
