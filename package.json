@@ -1,7 +1,7 @@
 {
-  "name": "node-foursquare-2",
+  "name": "node-foursquare",
   "description": "Fault-tolerant Foursquare API v2 wrapper for Node JS.",
-  "version": "0.1.5",
+  "version": "0.2.0",
   "main": "index.js",
   "keywords": [
     "node-foursquare",
@@ -15,28 +15,29 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/gamebox/node-foursquare.git"
+    "url": "git://github.com/clintandrewhall/node-foursquare.git"
   },
   "bugs": {
-    "url": "https://github.com/gamebox/node-foursquare/issues"
+    "url": "https://github.com/clintandrewhall/node-foursquare/issues"
   },
   "licenses": [
     {
       "type": "MIT",
-      "url": "http://github.com/gamebox/node-foursquare/raw/master/LICENSE"
+      "url": "http://github.com/clintandrewhall/node-foursquare/raw/master/LICENSE"
     }
   ],
   "dependencies": {
-    "log4js": "~0.4.1"
+    "nconf": "0.6.x",
+    "winston": "0.6.x"
   },
   "devDependencies": {
-    "express": "~2.5.0"
+    "express": "2.5.x"
   },
   "engines": {
-    "node": ">= 0.4.x"
+    "node": ">= 0.6.x"
   },
-  "homepage": "https://github.com/gamebox/node-foursquare",
-  "author": "Clint Andrew Hall (http://www.clintandrewhall.com) with slight enhancements by Anthony Bullard(anthonybullard.me)",
+  "homepage": "https://github.com/clintandrewhall/node-foursquare",
+  "author": "Clint Andrew Hall (http://www.clintandrewhall.com)",
   "directories": {
     "lib": "./lib",
     "doc": "./doc"
