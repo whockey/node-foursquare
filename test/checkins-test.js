@@ -63,6 +63,54 @@ var Checkins = function(config, accessToken) {
           }
         }
       });
+    },
+
+    addCommentToCheckin : function() {
+      var self = this;
+      var test = 'Foursquare.Checkins.addCommentToCheckin(50c409cbe4b092542cc01fa8, \'Hello world!\')';
+      Foursquare.Checkins.addCommentToCheckin('50c409cbe4b092542cc01fa8', 'Hello world!', null, accessToken, function (error, data) {
+        if(error) {
+          testUtil.reportError(logger, test, error.message);
+        }
+        else {
+          try {
+            testUtil.reportData(logger, test, util.inspect(data));
+            assert.ok(data.comment);
+            assert.ok(data.comment.id);
+            assert.equal(data.comment.text, 'Hello world!');
+            testUtil.reportOk(logger, test);
+
+            // Executes the deleteCommentFromCheckin test by removing the just-added comment
+            function deleteCommentFromCheckin(checkinId, commentId) {
+              // Executes only when called from addCommentToCheckin
+              if(!checkinId || !commentId) return;
+
+              var test = 'Foursquare.Checkins.deleteCommentFromCheckin(' + checkinId + ', ' + commentId + ' })';
+
+              Foursquare.Checkins.deleteCommentFromCheckin(checkinId, commentId, null, accessToken, function (error, data) {
+                if(error) {
+                  testUtil.reportError(logger, test, error.message);
+                }
+                else {
+                  try {
+                    testUtil.reportData(logger, test, util.inspect(data));
+                    assert.ok(data.checkin);
+                    assert.equal(data.checkin.id, checkinId);
+                    assert.equal(data.checkin.type, 'checkin');
+                    testUtil.reportOk(logger, test);
+                  } catch (error) {
+                    testUtil.reportError(logger, test, error);
+                  }
+                }
+              });
+            }
+
+            deleteCommentFromCheckin('50c409cbe4b092542cc01fa8', data.comment.id);
+          } catch (error) {
+            testUtil.reportError(logger, test, error);
+          }
+        }
+      });
     }
   }
 };

@@ -161,7 +161,7 @@ var VenuesTest = function(config, accessToken) {
 
     getLinks : function() {
       var test = "Foursquare.Venues.getLinks('5104')";
-      Foursquare.Venues.getLinks("5104", null, accessToken, function (error, data) {
+      Foursquare.Venues.getLinks("5104", accessToken, function (error, data) {
         if(error) {
           testUtil.reportError(logger, test, error.message);
         }
