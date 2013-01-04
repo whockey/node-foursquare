@@ -27,14 +27,13 @@
     }
   ],
   "dependencies": {
-    "nconf": "0.6.x",
     "winston": "0.6.x"
   },
   "devDependencies": {
     "express": "2.5.x"
   },
   "engines": {
-    "node": ">= 0.6.x"
+    "node": ">= 0.8.x"
   },
   "homepage": "https://github.com/clintandrewhall/node-foursquare",
   "author": "Clint Andrew Hall (http://www.clintandrewhall.com)",

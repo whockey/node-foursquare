@@ -8,8 +8,8 @@ var ListsTests = function(config, accessToken) {
 
   return {
     getList : function() {
-      var test = "Foursquare.Lists.getList(4e4e804fd22daf51d267e1dd)";
-      Foursquare.Lists.getList("4e4e804fd22daf51d267e1dd", accessToken, function (error, data) {
+      var test = 'Foursquare.Lists.getList(4e4e804fd22daf51d267e1dd)';
+      Foursquare.Lists.getList('4e4e804fd22daf51d267e1dd', accessToken, function (error, data) {
         if(error) {
           testUtil.reportError(logger, test, error.message);
         }
@@ -17,7 +17,7 @@ var ListsTests = function(config, accessToken) {
           try {
             testUtil.reportData(logger, test, util.inspect(data));
             assert.ok(data.list);
-            assert.equal(data.list.id, "4e4e804fd22daf51d267e1dd");
+            assert.equal(data.list.id, '4e4e804fd22daf51d267e1dd');
             testUtil.reportOk(logger, test);
           } catch (error) {
             testUtil.reportError(logger, test, error);
@@ -27,8 +27,8 @@ var ListsTests = function(config, accessToken) {
     },
   
     getFollowers : function() {
-      var test = "Foursquare.Lists.getFollowers(4e4e804fd22daf51d267e1dd)";
-      Foursquare.Lists.getFollowers("4e4e804fd22daf51d267e1dd", accessToken, function (error, data) {
+      var test = 'Foursquare.Lists.getFollowers(4e4e804fd22daf51d267e1dd)';
+      Foursquare.Lists.getFollowers('4e4e804fd22daf51d267e1dd', accessToken, function (error, data) {
         if(error) {
           testUtil.reportError(logger, test, error.message);
         }
@@ -46,8 +46,8 @@ var ListsTests = function(config, accessToken) {
     },
   
     getSuggestedPhotos : function() {
-      var test = "Foursquare.Lists.getSuggestedPhotos(4e4e804fd22daf51d267e1dd, v4bc49ceff8219c74ea97b710)";
-      Foursquare.Lists.getSuggestedPhotos("4e4e804fd22daf51d267e1dd", "v4bc49ceff8219c74ea97b710", accessToken, function (error, data) {
+      var test = 'Foursquare.Lists.getSuggestedPhotos(4e4e804fd22daf51d267e1dd, v4bc49ceff8219c74ea97b710)';
+      Foursquare.Lists.getSuggestedPhotos('4e4e804fd22daf51d267e1dd', 'v4bc49ceff8219c74ea97b710', accessToken, function (error, data) {
         if(error) {
           testUtil.reportError(logger, test, error.message);
         }
@@ -70,8 +70,8 @@ var ListsTests = function(config, accessToken) {
     },
   
     getSuggestedTips : function() {
-      var test = "Foursquare.Lists.getSuggestedTips(4e4e804fd22daf51d267e1dd, v4bc49ceff8219c74ea97b710)";
-      Foursquare.Lists.getSuggestedPhotos("4e4e804fd22daf51d267e1dd", "v4bc49ceff8219c74ea97b710", accessToken, function (error, data) {
+      var test = 'Foursquare.Lists.getSuggestedTips(4e4e804fd22daf51d267e1dd, v4bc49ceff8219c74ea97b710)';
+      Foursquare.Lists.getSuggestedPhotos('4e4e804fd22daf51d267e1dd', 'v4bc49ceff8219c74ea97b710', accessToken, function (error, data) {
         if(error) {
           testUtil.reportError(logger, test, error.message);
         }
@@ -94,8 +94,8 @@ var ListsTests = function(config, accessToken) {
     },
 
     getSuggestedVenues : function() {
-      var test = "Foursquare.Lists.getSuggestedVenues(4e4e804fd22daf51d267e1dd)";
-      Foursquare.Lists.getSuggestedVenues("4e4e804fd22daf51d267e1dd", accessToken, function (error, data) {
+      var test = 'Foursquare.Lists.getSuggestedVenues(4e4e804fd22daf51d267e1dd)';
+      Foursquare.Lists.getSuggestedVenues('4e4e804fd22daf51d267e1dd', accessToken, function (error, data) {
         if(error) {
           testUtil.reportError(logger, test, error.message);
         }
