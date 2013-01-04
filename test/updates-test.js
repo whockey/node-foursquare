@@ -7,6 +7,14 @@ var UpdatesTest = function(config, accessToken) {
     logger = testUtil.getLogger('Updates-Test');
 
   return {
+    getUpdate : function() {
+      testUtil.reportError(
+        logger,
+        'Foursquare.Updates.getUpdate(\'[xxxx]\')',
+        'Cannot test: Foursquare does not supply a mock.'
+      );
+    },
+
     getNotifications : function() {
       var test = 'Foursquare.Updates.getNotifications()';
       Foursquare.Updates.getNotifications({}, accessToken, function (error, data) {

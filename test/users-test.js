@@ -7,85 +7,6 @@ var UsersTests = function(config, accessToken) {
     logger = testUtil.getLogger('Users-Test');
 
   return {
-    search : function() {
-      var params = { 'twitter': 'naveen' },
-        test = 'Foursquare.Users.search(twitter=naveen)';
-      Foursquare.Users.search(params, accessToken, function(error, data) {
-        if(error) {
-          testUtil.reportError(logger, test, error.message);
-        }
-        else {
-          try {
-            testUtil.reportData(logger, test, util.inspect(data));
-            assert.ok(logger, data.results);
-            assert.equal(data.results[0].id, '33');
-            assert.equal(data.results[0].firstName, 'naveen');
-            testUtil.reportOk(logger, test);
-          } catch (error) {
-            testUtil.reportError(logger, test, error);
-          }
-        }
-      });
-    },
-
-    getLeaderboard : function() {
-      var test = 'Foursquare.Users.getLeaderboard()';
-      Foursquare.Users.getLeaderboard({}, accessToken, function (error, data) {
-        if(error) {
-          testUtil.reportError(logger, test, error.message);
-        }
-        else {
-          try {
-            testUtil.reportData(logger, test, util.inspect(data));
-            assert.ok(logger, data.leaderboard);
-            assert.ok(logger, data.leaderboard.count >= 0);
-            assert.ok(logger, data.leaderboard.items);
-            testUtil.reportOk(logger, test);
-          } catch (error) {
-            testUtil.reportError(logger, test, error);
-          }
-        }
-      });
-    },
-
-    getUser : function() {
-      var test = 'Foursquare.Users.getUser(self)';
-      Foursquare.Users.getUser('self', accessToken, function (error, data) {
-        if(error) {
-          testUtil.reportError(logger, test, error.message);
-        }
-        else {
-          try {
-            testUtil.reportData(logger, test, util.inspect(data));
-            assert.ok(logger, data.user);
-            assert.ok(logger, data.user.id);
-            assert.ok(logger, data.user.firstName);
-            testUtil.reportOk(logger, test);
-          } catch (error) {
-            testUtil.reportError(logger, test, error);
-          }
-        }
-      });
-
-      Foursquare.Users.getUser('33', accessToken, function (error, data) {
-        var test = 'Foursquare.Users.getUser(33)';
-        if(error) {
-          testUtil.reportError(logger, test, error.message);
-        }
-        else {
-          try {
-            testUtil.reportData(logger, test, util.inspect(data));
-            assert.ok(logger, data.user);
-            assert.equal(data.user.id, '33');
-            assert.equal(data.user.firstName, 'naveen');
-            testUtil.reportOk(logger, test);
-          } catch (error) {
-            testUtil.reportError(logger, test, error);
-          }
-        }
-      });
-    },
-
     getBadges : function() {
       var test = 'Foursquare.Users.getBadges(self)';
       Foursquare.Users.getBadges(null, accessToken, function (error, data) {
@@ -144,6 +65,46 @@ var UsersTests = function(config, accessToken) {
       });
     },
 
+    getLeaderboard : function() {
+      var test = 'Foursquare.Users.getLeaderboard()';
+      Foursquare.Users.getLeaderboard({}, accessToken, function (error, data) {
+        if(error) {
+          testUtil.reportError(logger, test, error.message);
+        }
+        else {
+          try {
+            testUtil.reportData(logger, test, util.inspect(data));
+            assert.ok(logger, data.leaderboard);
+            assert.ok(logger, data.leaderboard.count >= 0);
+            assert.ok(logger, data.leaderboard.items);
+            testUtil.reportOk(logger, test);
+          } catch (error) {
+            testUtil.reportError(logger, test, error);
+          }
+        }
+      });
+    },
+
+    getLists : function() {
+      var test = 'Foursquare.Users.getLists(self)';
+      Foursquare.Users.getLists(null, null, accessToken, function (error, data) {
+        if(error) {
+          testUtil.reportError(logger, test, error.message);
+        }
+        else {
+          try {
+            testUtil.reportData(logger, test, util.inspect(data));
+            assert.ok(logger, data.lists);
+            assert.ok(logger, data.lists.count >= 0);
+            assert.ok(logger, data.lists.groups);
+            testUtil.reportOk(logger, test);
+          } catch (error) {
+            testUtil.reportError(logger, test, error);
+          }
+        }
+      });
+    },
+
     getMayorships : function() {
       var test = 'Foursquare.Users.getMayorships(self)';
       Foursquare.Users.getMayorships(null, null, accessToken, function (error, data) {
@@ -156,6 +117,44 @@ var UsersTests = function(config, accessToken) {
             assert.ok(logger, data.mayorships);
             assert.ok(logger, data.mayorships.count >= 0);
             assert.ok(logger, data.mayorships.items);
+            testUtil.reportOk(logger, test);
+          } catch (error) {
+            testUtil.reportError(logger, test, error);
+          }
+        }
+      });
+    },
+
+    getPhotos : function() {
+      var test = 'Foursquare.Users.getPhotos(self)';
+      Foursquare.Users.getPhotos(null, null, accessToken, function (error, data) {
+        if(error) {
+          testUtil.reportError(logger, test, error.message);
+        }
+        else {
+          try {
+            testUtil.reportData(logger, test, util.inspect(data));
+            assert.ok(logger, data.photos);
+            assert.ok(logger, data.photos.count >= 0);
+            assert.ok(logger, data.photos.items);
+            testUtil.reportOk(logger, test);
+          } catch (error) {
+            testUtil.reportError(logger, test, error);
+          }
+        }
+      });
+    },
+
+    getRequests : function() {
+      var test = 'Foursquare.Users.getRequests()';
+      Foursquare.Users.getRequests(accessToken, function (error, data) {
+        if(error) {
+          testUtil.reportError(logger, test, error.message);
+        }
+        else {
+          try {
+            testUtil.reportData(logger, test, util.inspect(data));
+            assert.ok(logger, data.requests);
             testUtil.reportOk(logger, test);
           } catch (error) {
             testUtil.reportError(logger, test, error);
@@ -204,6 +203,44 @@ var UsersTests = function(config, accessToken) {
       });
     },
 
+    getUser : function() {
+      var test = 'Foursquare.Users.getUser(self)';
+      Foursquare.Users.getUser('self', accessToken, function (error, data) {
+        if(error) {
+          testUtil.reportError(logger, test, error.message);
+        }
+        else {
+          try {
+            testUtil.reportData(logger, test, util.inspect(data));
+            assert.ok(logger, data.user);
+            assert.ok(logger, data.user.id);
+            assert.ok(logger, data.user.firstName);
+            testUtil.reportOk(logger, test);
+          } catch (error) {
+            testUtil.reportError(logger, test, error);
+          }
+        }
+      });
+
+      Foursquare.Users.getUser('33', accessToken, function (error, data) {
+        var test = 'Foursquare.Users.getUser(33)';
+        if(error) {
+          testUtil.reportError(logger, test, error.message);
+        }
+        else {
+          try {
+            testUtil.reportData(logger, test, util.inspect(data));
+            assert.ok(logger, data.user);
+            assert.equal(data.user.id, '33');
+            assert.equal(data.user.firstName, 'naveen');
+            testUtil.reportOk(logger, test);
+          } catch (error) {
+            testUtil.reportError(logger, test, error);
+          }
+        }
+      });
+    },
+
     getVenueHistory : function() {
       var test = 'Foursquare.Users.getVenueHistory(self)';
       Foursquare.Users.getVenueHistory(null, null, accessToken, function (error, data) {
@@ -224,56 +261,19 @@ var UsersTests = function(config, accessToken) {
       });
     },
 
-    getRequests : function() {
-      var test = 'Foursquare.Users.getRequests()';
-      Foursquare.Users.getRequests(accessToken, function (error, data) {
+    search : function() {
+      var params = { 'twitter': 'naveen' },
+        test = 'Foursquare.Users.search(twitter=naveen)';
+      Foursquare.Users.search(params, accessToken, function(error, data) {
         if(error) {
           testUtil.reportError(logger, test, error.message);
         }
         else {
           try {
             testUtil.reportData(logger, test, util.inspect(data));
-            assert.ok(logger, data.requests);
-            testUtil.reportOk(logger, test);
-          } catch (error) {
-            testUtil.reportError(logger, test, error);
-          }
-        }
-      });
-    },
-
-    getLists : function() {
-      var test = 'Foursquare.Users.getLists(self)';
-      Foursquare.Users.getLists(null, null, accessToken, function (error, data) {
-        if(error) {
-          testUtil.reportError(logger, test, error.message);
-        }
-        else {
-          try {
-            testUtil.reportData(logger, test, util.inspect(data));
-            assert.ok(logger, data.lists);
-            assert.ok(logger, data.lists.count >= 0);
-            assert.ok(logger, data.lists.groups);
-            testUtil.reportOk(logger, test);
-          } catch (error) {
-            testUtil.reportError(logger, test, error);
-          }
-        }
-      });
-    },
-
-    getPhotos : function() {
-      var test = 'Foursquare.Users.getPhotos(self)';
-      Foursquare.Users.getPhotos(null, null, accessToken, function (error, data) {
-        if(error) {
-          testUtil.reportError(logger, test, error.message);
-        }
-        else {
-          try {
-            testUtil.reportData(logger, test, util.inspect(data));
-            assert.ok(logger, data.photos);
-            assert.ok(logger, data.photos.count >= 0);
-            assert.ok(logger, data.photos.items);
+            assert.ok(logger, data.results);
+            assert.equal(data.results[0].id, '33');
+            assert.equal(data.results[0].firstName, 'naveen');
             testUtil.reportOk(logger, test);
           } catch (error) {
             testUtil.reportError(logger, test, error);

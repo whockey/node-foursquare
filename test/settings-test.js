@@ -7,24 +7,6 @@ var SettingsTest = function(config, accessToken) {
     logger = testUtil.getLogger('Settings-Test');
 
   return {
-    getSettings : function() {
-      var test = "Foursquare.Settings.getSettings()";
-      Foursquare.Settings.getSettings(accessToken, function (error, data) {
-        if(error) {
-          testUtil.reportError(logger, test, error.message);
-        }
-        else {
-          try {
-            testUtil.reportData(logger, test, util.inspect(data));
-            assert.ok(data.settings);
-            testUtil.reportOk(logger, test);
-          } catch (error) {
-            testUtil.reportError(logger, test, error);
-          }
-        }
-      });
-    },
-  
     getSetting : function() {
       var test = "Foursquare.Settings.getSetting('receivePings')";
       Foursquare.Settings.getSetting("receivePings", accessToken, function (error, data) {
@@ -41,6 +23,24 @@ var SettingsTest = function(config, accessToken) {
           }
         }
       })
+    },
+
+    getSettings : function() {
+      var test = "Foursquare.Settings.getSettings()";
+      Foursquare.Settings.getSettings(accessToken, function (error, data) {
+        if(error) {
+          testUtil.reportError(logger, test, error.message);
+        }
+        else {
+          try {
+            testUtil.reportData(logger, test, util.inspect(data));
+            assert.ok(data.settings);
+            testUtil.reportOk(logger, test);
+          } catch (error) {
+            testUtil.reportError(logger, test, error);
+          }
+        }
+      });
     }
   };
 };

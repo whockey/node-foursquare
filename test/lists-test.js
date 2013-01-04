@@ -45,24 +45,6 @@ var ListsTests = function(config, accessToken) {
       });
     },
   
-    getSuggestedVenues : function() {
-      var test = "Foursquare.Lists.getSuggestedVenues(4e4e804fd22daf51d267e1dd)";
-      Foursquare.Lists.getSuggestedVenues("4e4e804fd22daf51d267e1dd", accessToken, function (error, data) {
-        if(error) {
-          testUtil.reportError(logger, test, error.message);
-        }
-        else {
-          try {
-            testUtil.reportData(logger, test, util.inspect(data));
-            assert.ok(data.suggestedVenues);
-            testUtil.reportOk(logger, test);
-          } catch (error) {
-            testUtil.reportError(logger, test, error);
-          }
-        }
-      });
-    },
-  
     getSuggestedPhotos : function() {
       var test = "Foursquare.Lists.getSuggestedPhotos(4e4e804fd22daf51d267e1dd, v4bc49ceff8219c74ea97b710)";
       Foursquare.Lists.getSuggestedPhotos("4e4e804fd22daf51d267e1dd", "v4bc49ceff8219c74ea97b710", accessToken, function (error, data) {
@@ -103,6 +85,24 @@ var ListsTests = function(config, accessToken) {
             assert.ok(data.photos.others);
             assert.ok(data.photos.others.count);
             assert.ok(data.photos.others.items);
+            testUtil.reportOk(logger, test);
+          } catch (error) {
+            testUtil.reportError(logger, test, error);
+          }
+        }
+      });
+    },
+
+    getSuggestedVenues : function() {
+      var test = "Foursquare.Lists.getSuggestedVenues(4e4e804fd22daf51d267e1dd)";
+      Foursquare.Lists.getSuggestedVenues("4e4e804fd22daf51d267e1dd", accessToken, function (error, data) {
+        if(error) {
+          testUtil.reportError(logger, test, error.message);
+        }
+        else {
+          try {
+            testUtil.reportData(logger, test, util.inspect(data));
+            assert.ok(data.suggestedVenues);
             testUtil.reportOk(logger, test);
           } catch (error) {
             testUtil.reportError(logger, test, error);
