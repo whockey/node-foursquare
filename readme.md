@@ -48,16 +48,16 @@ Foursquare URLs if necessary, (but that is unlikely).
 Once instantiated, you just need to set up endpoints on your own server that match your OAuth configuration
 in Foursquare.  Using Express, for example:
 
-    var app = express.createServer();
+    var app = express();
 
     app.get('/login', function(req, res) {
-      res.writeHead(303, { 'location': Foursquare.getAuthClientRedirectUrl() });
+      res.writeHead(303, { 'location': foursquare.getAuthClientRedirectUrl() });
       res.end();
     });
 
 
     app.get('/callback', function (req, res) {
-      Foursquare.getAccessToken({
+      foursquare.getAccessToken({
         code: req.query.code
       }, function (error, accessToken) {
         if(error) {
