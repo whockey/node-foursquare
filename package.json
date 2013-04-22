@@ -1,7 +1,7 @@
 {
-  "name": "node-foursquare",
+  "name": "node-foursquare-plaid",
   "description": "Fault-tolerant Foursquare API v2 wrapper for Node JS.",
-  "version": "0.2.0",
+  "version": "0.0.1",
   "main": "index.js",
   "keywords": [
     "node-foursquare",
@@ -15,7 +15,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/clintandrewhall/node-foursquare.git"
+    "url": "git://github.com/whockey/node-foursquare.git"
   },
   "bugs": {
     "url": "https://github.com/clintandrewhall/node-foursquare/issues"
